@@ -1,0 +1,38 @@
+<div class="header-container">
+  <div class="logo-container d-none d-xl-flex">
+    <a (click)="toggleSidebar()" href="#" class="sidebar-toggle ">
+      <nb-icon icon="menu-2-outline"></nb-icon>
+    </a>
+    <!-- <a href="#">
+      <nb-icon icon="star" ></nb-icon>
+    </a> -->
+    <a class="logo" href="#" (click)="navigateHome()">
+      <img src="../../../../favicon.png" alt="logo icon" width="30px">
+      Ramanan Angular Project</a>
+  </div>
+  <a class="logo d-xl-none d-block" href="#" (click)="navigateHome()">Ramanan Angular Project</a>
+  <!-- <nb-select
+    [selected]="currentTheme"
+    (selectedChange)="changeTheme($event)"
+    status="primary"
+  >
+    <nb-option *ngFor="let theme of themes" [value]="theme.value">
+      {{ theme.name }}</nb-option
+    >
+  </nb-select> -->
+</div>
+
+<div class="header-container">
+  <nb-actions size="small">
+    <nb-action class="user-action" *nbIsGranted="['view', 'user']">
+      <nb-user [nbContextMenu]="userMenu"
+        [onlyPicture]="userPictureOnly"
+       [name]="user?.displayName"
+       picture="../../../../favicon.png" size="large">
+      </nb-user>
+    </nb-action>
+  </nb-actions>
+  <a (click)="toggleSidebar()" href="#" class="sidebar-toggle d-xl-none d-block">
+    <nb-icon icon="menu-2-outline"></nb-icon>
+  </a>
+</div>

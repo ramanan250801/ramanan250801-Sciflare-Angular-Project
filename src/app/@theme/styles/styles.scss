@@ -1,0 +1,160 @@
+// Fonts to Import
+
+@font-face {
+  font-family: CabifyCircularWeb-Bold;
+  src: url(./../../../assets/fonts/CabifyCircularWeb-Bold.otf)
+    format("opentype");
+}
+
+@font-face {
+  font-family: CabifyCircularWeb-Book;
+  src: url(./../../../assets/fonts/CabifyCircularWeb-Book.otf)
+    format("opentype");
+}
+
+@font-face {
+  font-family: CabifyCircularWeb-Light;
+  src: url(./../../../assets/fonts/CabifyCircularWeb-Light.otf)
+    format("opentype");
+}
+
+// themes - our custom or/and out of the box themes
+@import "themes";
+
+// framework component themes (styles tied to theme variables)
+@import "@nebular/theme/styles/globals";
+@import "@nebular/auth/styles/globals";
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/grid";
+
+// loading progress bar theme
+@import "./pace.theme";
+
+@import "./layout";
+@import "./overrides";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+// install the framework and custom global styles
+@include nb-install() {
+  // framework global styles
+  @include nb-theme-global();
+  @include nb-auth-global();
+
+  @include ngx-layout();
+  // loading progress bar
+  @include ngx-pace-theme();
+
+  @include nb-overrides();
+}
+
+.fileImageForng2-table {
+  width: 100px;
+}
+
+.fileImageForForm {
+  border-radius: 50%;
+  margin-top: 25px;
+  margin-left: 18px;
+  height: 125px;
+  width: 140px;
+}
+
+.star {
+  color: red;
+}
+
+// nb-card-body .ng-touched.ng-select.ng-invalid .ng-select-container {
+//   border-color: red !important;
+// }
+
+// nb-card-body .ng-touched.ng-select .ng-select-container {
+
+//    font-family: 'Amarillo'!important;
+// }
+
+// nb-card-body .ng-touched.ng-select.ng-valid .ng-select-container {
+//   border-color: green !important;
+// }
+
+nb-card {
+  max-height: 640px;
+  overflow-y: scroll;
+}
+
+nb-card-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
+nb-card-body {
+  overflow: visible !important;
+}
+
+nb-card-footer {
+  position: sticky;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.ng2-smart-table-styles {
+  overflow-x: scroll;
+}
+
+ng2-smart-table {
+  text-align-last: center;
+}
+
+.header-menu-button {
+  width: 165px;
+}
+
+.ng-select-container {
+  height: 40px !important;
+  background-color: #f7f9fc !important;
+  border-color: #e4e9f2 !important;
+}
+
+.dialogBoxTitle {
+  font-weight: 600;
+  line-height: 3;
+}
+
+.alert-danger {
+  color: red;
+  background-color: unset;
+  border-color: unset;
+}
+
+// nb-layout-column {
+//   padding: 1% 0% 0% 0% !important;
+// }
+
+agm-map {
+  height: 300px;
+}
+
+.changePasswordDialogBox {
+  width: 50vw;
+}
+
+nb-card-body label{
+  font-size: 14px !important;
+}
+
+.menubutton {
+  text-align-last: right;
+}
+
+a.ng-tns-c143-0.ng-star-inserted {
+  height: 70px;
+}
+
+.promocode-input {
+  max-width: unset !important;
+}

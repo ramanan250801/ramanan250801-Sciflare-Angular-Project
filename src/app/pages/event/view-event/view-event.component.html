@@ -1,0 +1,11 @@
+
+<nb-card >
+    <nb-card-header>
+      {{'EVENT.EVENTTABLE' | translate}}
+    </nb-card-header>
+      <nb-card-body>
+        <ng2-smart-table [settings]="settings" [source]="source" (create)="onAdd($event)" (edit)="onEdit($event.data)"
+          (deleteConfirm)="onDeleteConfirm($event)">
+        </ng2-smart-table>
+      </nb-card-body>
+  </nb-card>

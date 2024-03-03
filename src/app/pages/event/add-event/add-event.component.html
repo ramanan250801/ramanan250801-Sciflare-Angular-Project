@@ -1,0 +1,126 @@
+<nb-card *ngIf="initial == 0">
+    <nb-card-header>
+        <div class="row align-items-baseline">
+            <div class="col-md-.5">
+                <button (click)="goBackBtn()" nbButton ghost status="danger">
+                    <nb-icon icon="arrow-back-outline"></nb-icon>
+                </button>
+            </div>
+            <div class="col-md-11" *ngIf="!eventForm.get('id').value">{{'EVENT.ADDEVENT' | translate}}</div>
+            <div class="col-md-11" *ngIf="eventForm.get('id').value">{{'EVENT.EDITEVENT' | translate}}</div>
+            <div class="col-md-.5" *ngIf="eventForm.get('id').value">
+                <button nbButton ghost status="primary" [nbContextMenu]="items">
+                    <nb-icon icon="more-vertical"></nb-icon>
+                </button>
+            </div>
+        </div>
+    </nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="eventForm" autocomplete="off">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="title" class="label col-form-label">{{'EVENT.EVENTCONDUCTOR' | translate}}
+                        <span class="{{'COMMON.STARCLASS' | translate}}">{{'COMMON.STAR' |
+                            translate}}</span></label>
+                    <input formControlName="eventconductor" type="text" nbInput fullWidth id="eventconductor"
+                        placeholder="{{'EVENT.EVENTCONDUCTOR' | translate}}" />
+                    <div *ngIf="eventconductor.invalid && (eventconductor.dirty || eventconductor.touched)" class="alert-danger">
+                        <div *ngIf="eventconductor.errors?.['required']">
+                            {{'EVENT.EVENTCONDUCTOR_REQUIRED' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="title" class="label col-form-label">{{'EVENT.EVENTCONDUCTORPHONE' | translate}}
+                        <span class="{{'COMMON.STARCLASS' | translate}}">{{'COMMON.STAR' |
+                            translate}}</span></label>
+                    <input formControlName="eventconductorphone" type="text" nbInput fullWidth id="eventconductorphone"
+                        placeholder="{{'EVENT.EVENTCONDUCTORPHONE' | translate}}" />
+                    <div *ngIf="eventconductorphone.invalid && (eventconductorphone.dirty || eventconductorphone.touched)" class="alert-danger">
+                        <div *ngIf="eventconductorphone.errors?.['required']">
+                            {{'EVENT.EVENTCONDUCTORPHONE_REQUIRED' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="title" class="label col-form-label">{{'EVENT.ADDRESS' | translate}}
+                        <span class="{{'COMMON.STARCLASS' | translate}}">{{'COMMON.STAR' |
+                            translate}}</span></label>
+                    <input formControlName="address" type="text" nbInput fullWidth id="address"
+                        placeholder="{{'EVENT.ADDRESS' | translate}}" />
+                    <div *ngIf="address.invalid && (address.dirty || address.touched)" class="alert-danger">
+                        <div *ngIf="address.errors?.['required']">
+                            {{'EVENT.ADDRESS_REQUIRED' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="title" class="label col-form-label">{{'EVENT.EVENT' | translate}}
+                        <span class="{{'COMMON.STARCLASS' | translate}}">{{'COMMON.STAR' |
+                            translate}}</span></label>
+                    <input formControlName="event" type="text" nbInput fullWidth id="event"
+                        placeholder="{{'EVENT.EVENT' | translate}}" />
+                    <div *ngIf="event.invalid && (event.dirty || event.touched)" class="alert-danger">
+                        <div *ngIf="event.errors?.['required']">
+                            {{'EVENT.EVENT_REQUIRED' | translate}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="title" class="label col-form-label">{{'EVENT.COORDINATOR' | translate}}
+                        <span class="{{'COMMON.STARCLASS' | translate}}">{{'COMMON.STAR' |
+                            translate}}</span></label>
+                    <input formControlName="coordinator" type="text" nbInput fullWidth id="coordinator"
+                        placeholder="{{'EVENT.COORDINATOR' | translate}}" />
+                    <div *ngIf="coordinator.invalid && (coordinator.dirty || coordinator.touched)" class="alert-danger">
+                        <div *ngIf="coordinator.errors?.['required']">
+                            {{'EVENT.COORDINATOR_REQUIRED' | translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <!-- <pre>
+          {{ eventForm.value | json }}
+        </pre> -->
+    </nb-card-body>
+    <nb-card-footer>
+        <div class="form-group row">
+            <div [ngClass]="eventForm.get('id').value?'offset-sm-0 col-sm-2':'offset-sm-0 col-sm-2'">
+                <button fullWidth type="submit" nbButton status="success" (click)="addOrEditEvent()">
+                    <span *ngIf="eventForm.get('id').value">
+                        <nb-icon icon="arrow-circle-up-outline"></nb-icon> {{'COMMON.UPDATEBTN' | translate}}
+                    </span>
+                    <span *ngIf="!eventForm.get('id').value">
+                        <nb-icon icon="save"></nb-icon> {{'COMMON.SAVEBTN' | translate}}
+                    </span>
+                </button>
+            </div>
+        </div>
+    </nb-card-footer>
+</nb-card>
+
+<ng-template class="dialogBox" #dialog let-data let-ref="dialogRef">
+    <nb-card>
+        <nb-card-body>
+            <div class="dialogBoxTitle">
+                <nb-icon icon="trash-2"></nb-icon> {{'EVENT.DELETEVENT' | translate}}
+            </div>
+            <div>
+                <nb-icon icon="alert-circle-outline"></nb-icon> {{ data }}
+            </div>
+            <div class="row">
+                <div class="offset-sm-0 col-sm-9">
+                    <button nbButton ghost status="success" (click)="ref.close();deleteEvent()">
+                        <nb-icon icon="checkmark-outline"></nb-icon>
+                    </button>
+                </div>
+                <div class="offset-sm-0 col-sm-2">
+                    <button nbButton ghost status="danger" (click)="ref.close()">
+                        <nb-icon icon="close-outline"></nb-icon>
+                    </button>
+                </div>
+            </div>
+        </nb-card-body>
+    </nb-card>
+</ng-template>
